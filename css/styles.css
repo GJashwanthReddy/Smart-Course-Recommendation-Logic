@@ -1,0 +1,346 @@
+/* Importing Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --bg-color: #080b11;
+    --card-bg: rgba(17, 24, 39, 0.7);
+    --card-border: rgba(99, 102, 241, 0.15);
+    --card-border-hover: rgba(168, 85, 247, 0.4);
+    --primary-grad: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --text-accent: #a855f7;
+    --accent-blue: #06b6d4;
+    --accent-green: #10b981;
+    --font-sans: 'Outfit', sans-serif;
+    --shadow-glow: 0 8px 32px 0 rgba(99, 102, 241, 0.2);
+    --glass-blur: blur(12px);
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image: 
+        radial-gradient(at 10% 20%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+        radial-gradient(at 90% 80%, rgba(168, 85, 247, 0.08) 0px, transparent 50%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+    background: var(--card-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+    border-color: var(--card-border-hover);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+}
+
+/* Gradients and Text */
+.text-gradient {
+    background: var(--primary-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Navigation bar */
+.navbar-custom {
+    background: rgba(8, 11, 17, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+    padding: 1rem 2rem;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link {
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--text-primary) !important;
+}
+
+/* Buttons */
+.btn-grad {
+    background: var(--primary-grad);
+    color: white !important;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+}
+
+.btn-grad:hover {
+    opacity: 0.95;
+    box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5);
+    transform: scale(1.02);
+}
+
+.btn-outline-custom {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-custom:hover {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: rgba(168, 85, 247, 0.8);
+    color: white;
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 6rem 0 3rem 0;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 2.5rem auto;
+}
+
+/* Toggle Offline switch */
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.status-online {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--accent-green);
+}
+
+.status-offline {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+/* Course Recommendations Cards */
+.course-card {
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+.course-badge {
+    background: rgba(99, 102, 241, 0.15);
+    color: #818cf8;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 6px;
+    text-transform: uppercase;
+}
+
+.difficulty-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.diff-easy { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); }
+.diff-medium { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+.diff-hard { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+
+.match-gpa-container {
+    display: flex;
+    gap: 15px;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.metric-box {
+    flex: 1;
+}
+
+.metric-label {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.metric-value {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* UI details */
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0.8rem 0;
+}
+
+.skill-tag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* Forms */
+.form-control-custom {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(99, 102, 241, 0.2) !important;
+    color: var(--text-primary) !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 1rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.form-control-custom:focus {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: var(--text-accent) !important;
+    box-shadow: 0 0 0 0.25rem rgba(168, 85, 247, 0.25) !important;
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+/* XAI Trace Panel */
+.xai-trace-panel {
+    background: #0f131f;
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 12px;
+    padding: 1.25rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    color: #38bdf8;
+    overflow-x: auto;
+    max-height: 400px;
+}
+
+/* Timelines (Semester Schedules) */
+.timeline-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 2rem 0;
+}
+
+@media (max-width: 991px) {
+    .timeline-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575px) {
+    .timeline-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.semester-bucket {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px dashed rgba(99, 102, 241, 0.3);
+    border-radius: 12px;
+    padding: 1rem;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+}
+
+.semester-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-accent);
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 4px;
+}
+
+.semester-course-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    cursor: grab;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade {
+    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Responsive Grid and utilities */
+.footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2.5rem 0;
+    margin-top: 5rem;
+    color: var(--text-secondary);
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}

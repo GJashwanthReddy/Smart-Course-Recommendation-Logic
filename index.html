@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Course Recommendation Logic - AI Course Advisor</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-cpu text-accent"></i>
+                <span class="text-gradient">Smart Course Advisor</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">AI Concepts & Logic</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin.html">Admin Panel</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center gap-3">
+                    <div class="status-pill status-online">
+                        ● Local AI Engine Active
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Hero Section -->
+        <header class="hero-section animate-fade">
+            <h1 class="hero-title">
+                Smart Course<br>
+                <span class="text-gradient">Recommendation Engine</span>
+            </h1>
+            <p class="hero-subtitle">
+                An explainable AI-powered system that constructs optimal student course paths, evaluates academic completion confidence using Bayesian networks, and schedules semesters using CSP constraint propagation.
+            </p>
+            <div>
+                <a href="#profileSection" class="btn btn-grad px-4 py-2 me-2"><i class="bi bi-lightning-charge-fill"></i> Get Started</a>
+                <a href="about.html" class="btn btn-outline-custom px-4 py-2"><i class="bi bi-journal-code"></i> Explore AI Logic</a>
+            </div>
+        </header>
+
+        <!-- Profile Input Section -->
+        <section id="profileSection" class="my-5 pt-4 animate-fade">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="glass-panel p-4 p-md-5">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="bg-primary bg-opacity-20 p-2 rounded-3 text-accent border border-primary border-opacity-30">
+                                <i class="bi bi-person-fill-gear fs-3"></i>
+                            </div>
+                            <div>
+                                <h3 class="fw-bold mb-0">Student Characteristics Profile</h3>
+                                <p class="text-secondary small mb-0">Provide academic status and aspirations to run the integrated reasoning pipeline.</p>
+                            </div>
+                        </div>
+
+                        <form id="profileForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label for="cgpa" class="form-label">Cumulative GPA (CGPA)</label>
+                                    <input type="number" class="form-control form-control-custom" id="cgpa" min="1.0" max="10.0" step="0.01" value="8.5" required>
+                                    <div class="form-text text-secondary">A scale from 1.0 to 10.0. Influences difficulty alignment.</div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label for="career_goal" class="form-label">Career Goal / Target Path</label>
+                                    <select class="form-select form-control-custom" id="career_goal" required>
+                                        <option value="Artificial Intelligence Engineer" selected>AI & Machine Learning Engineer</option>
+                                        <option value="Data Scientist">Data Scientist</option>
+                                        <option value="Software Engineer">Software Engineer / Architect</option>
+                                        <option value="Systems Engineer">Low-Level Systems Engineer</option>
+                                        <option value="Network Architect">Computer Network Specialist</option>
+                                    </select>
+                                    <div class="form-text text-secondary">Defines the target goal skills profile.</div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="interests" class="form-label">Aesthetic Core Interests (Comma-separated)</label>
+                                <input type="text" class="form-control form-control-custom" id="interests" placeholder="e.g. ai, algorithms, machine learning, databases" value="ai, algorithms" required>
+                                <div class="form-text text-secondary">Used as the primary rank weight. Recommendations reflect this most.</div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="skills_to_learn" class="form-label">Target Skills to Learn (Comma-separated)</label>
+                                <input type="text" class="form-control form-control-custom" id="skills_to_learn" placeholder="e.g. python, neural networks, sql, network design" value="python, ml, algorithms" required>
+                                <div class="form-text text-secondary">Additional skills desired for acquisition.</div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="completed_courses" class="form-label">Completed Course Codes (Comma-separated)</label>
+                                <input type="text" class="form-control form-control-custom" id="completed_courses" placeholder="e.g. CS101, CS201" value="CS101, CS201">
+                                <div class="form-text text-secondary">Establishes your initial state completed courses. Prerequisite checking filters this.</div>
+                            </div>
+
+                            <div class="text-end pt-3">
+                                <button type="submit" class="btn btn-grad px-5 py-3"><i class="bi bi-cpu-fill"></i> Run AI Recommendation Engine</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section (Hidden until recommendations run) -->
+        <div id="resultsSection" style="display: none;">
+            
+            <!-- Recommendations List -->
+            <section class="my-5">
+                <h3 class="fw-bold mb-4 d-flex align-items-center gap-2">
+                    <i class="bi bi-mortarboard-fill text-accent"></i> Primary Course Recommendations
+                </h3>
+                <div class="row" id="recommendedList">
+                    <!-- Recommendations populate here -->
+                </div>
+            </section>
+
+            <!-- Semester Curriculum Schedule -->
+            <section class="my-5">
+                <div class="glass-panel p-4">
+                    <h4 class="fw-bold mb-2 text-gradient"><i class="bi bi-calendar-event"></i> Semester Curriculum Planner</h4>
+                    <p class="text-secondary small mb-4">Selected courses organized into a valid 4-semester progression satisfying credit load boundaries (<= 8 credits) and prerequisite sequences.</p>
+                    
+                    <div class="timeline-container" id="timelineContainer">
+                        <!-- CSP Timeline buckets populate here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chart.js Analysis Visualizations -->
+            <section class="my-5">
+                <h3 class="fw-bold mb-4 d-flex align-items-center gap-2">
+                    <i class="bi bi-bar-chart-steps text-accent"></i> Empirical Performance & Utility Metrics
+                </h3>
+                <div class="row">
+                    <!-- Search Comparison Chart -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="glass-panel p-4" style="height: 400px; display: flex; flex-direction: column;">
+                            <h5 class="fw-bold mb-3"><i class="bi bi-search text-info"></i> Search Algorithms Performance</h5>
+                            <div class="flex-grow-1 position-relative">
+                                <canvas id="searchChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- MAUT Utilities Chart -->
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="glass-panel p-4" style="height: 400px; display: flex; flex-direction: column;">
+                            <h5 class="fw-bold mb-3"><i class="bi bi-sliders text-accent"></i> Course Utility Profile</h5>
+                            <div class="flex-grow-1 position-relative">
+                                <canvas id="utilityChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BayesianRadar Chart -->
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="glass-panel p-4" style="height: 400px; display: flex; flex-direction: column;">
+                            <h5 class="fw-bold mb-3"><i class="bi bi-diagram-3 text-pink"></i> Success Probability Analysis</h5>
+                            <div class="flex-grow-1 position-relative">
+                                <canvas id="bayesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Minimax Decision Game -->
+            <section class="my-5">
+                <div class="glass-panel p-4 border-accent">
+                    <h4 class="fw-bold text-gradient mb-2" id="minimaxTitle">Minimax Selecting Course Track</h4>
+                    <p class="text-secondary small mb-0" id="minimaxDesc"></p>
+                </div>
+            </section>
+
+            <!-- Explainable AI (XAI) Debugging panel -->
+            <section class="my-5">
+                <div class="glass-panel p-4">
+                    <h4 class="fw-bold mb-3"><i class="bi bi-journal-code text-accent"></i> Explainable AI (XAI) Trace Panel</h4>
+                    <p class="text-secondary small mb-4">Review the diagnostic logic steps of the integrated reasoning pipeline from the engine core.</p>
+                    
+                    <ul class="nav nav-tabs mb-3 border-secondary-subtle" id="xaiTabs" role="tablist">
+                        <li class="nav-item">
+                            <button class="nav-link active text-light border-0 bg-transparent" id="state-tab" data-bs-toggle="tab" data-bs-target="#state-pane" type="button">State Space Formulation</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link text-light border-0 bg-transparent" id="search-tab" data-bs-toggle="tab" data-bs-target="#search-pane" type="button">State-Space Search Comparison</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link text-light border-0 bg-transparent" id="csp-tab" data-bs-toggle="tab" data-bs-target="#csp-pane" type="button">Constraint Scheduling Logic</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link text-light border-0 bg-transparent" id="decision-tab" data-bs-toggle="tab" data-bs-target="#decision-pane" type="button">Adversarial Decision Game</button>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content" id="xaiTabsContent">
+                        <div class="tab-pane fade show active" id="state-pane" role="tabpanel">
+                            <pre class="xai-trace-panel" id="stateTrace">State trace output will appear here...</pre>
+                        </div>
+                        <div class="tab-pane fade" id="search-pane" role="tabpanel">
+                            <pre class="xai-trace-panel" id="searchTrace">Search trace output will appear here...</pre>
+                        </div>
+                        <div class="tab-pane fade" id="csp-pane" role="tabpanel">
+                            <pre class="xai-trace-panel" id="cspTrace">CSP trace output will appear here...</pre>
+                        </div>
+                        <div class="tab-pane fade" id="decision-pane" role="tabpanel">
+                            <pre class="xai-trace-panel" id="decisionTrace">Decision trace output will appear here...</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Course Catalog (Bottom Listing) -->
+        <section class="my-5 pt-4">
+            <h3 class="fw-bold mb-4 d-flex align-items-center gap-2">
+                <i class="bi bi-grid-3x3-gap-fill text-accent"></i> Seed Course Catalog
+            </h3>
+            <div class="row" id="coursesCatalog">
+                <!-- Catalog load here -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer text-center">
+            <div class="container">
+                <p class="mb-1"><strong>Smart Course Recommendation Logic Web App</strong></p>
+                <p class="small mb-0">Final Year CFAI Mini Project. Configured in a decoupled, offline-first client architecture.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Bootstrap & Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Decoupled Assets -->
+    <script src="js/mock_engine.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
